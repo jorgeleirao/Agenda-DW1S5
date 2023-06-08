@@ -1,6 +1,11 @@
-CREATE DATABASE agenda /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+CREATE DATABASE IF NOT EXISTS agenda;
+USE agenda;
+
+DROP TABLE IF EXISTS tarefas;
+DROP TABLE IF EXISTS usuarios;
+
 CREATE TABLE usuarios (
-  id int(11) NOT NULL,
+  id int NOT NULL,
   login varchar(250) DEFAULT NULL,
   senha varchar(20) DEFAULT NULL,
   nome varchar(45) DEFAULT NULL,
@@ -8,14 +13,14 @@ CREATE TABLE usuarios (
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-CREATE TABLE `tarefas` (
-  id int(11) NOT NULL,
+CREATE TABLE tarefas (
+  id int NOT NULL,
   titulo varchar(20) DEFAULT NULL,
   descricao varchar(250) DEFAULT NULL,
   data_criacao datetime DEFAULT NULL,
   data_conclusao datetime DEFAULT NULL,
   status varchar(45) DEFAULT NULL,
-  id_usuario int(11) NOT NULL,
+  id_usuario int NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (id_usuario) references usuarios
+  FOREIGN KEY (id_usuario) references usuarios(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
