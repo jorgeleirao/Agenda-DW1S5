@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS tarefas;
 DROP TABLE IF EXISTS usuarios;
 
 CREATE TABLE usuarios (
-  id int NOT NULL,
+  id int NOT NULL AUTO_INCREMENT,
   login varchar(250) DEFAULT NULL,
   senha varchar(20) DEFAULT NULL,
   nome varchar(45) DEFAULT NULL,
@@ -14,13 +14,13 @@ CREATE TABLE usuarios (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE tarefas (
-  id int NOT NULL,
+  id int NOT NULL AUTO_INCREMENT,
   titulo varchar(20) DEFAULT NULL,
   descricao varchar(250) DEFAULT NULL,
   data_criacao datetime DEFAULT NULL,
   data_conclusao datetime DEFAULT NULL,
   status varchar(45) DEFAULT NULL,
-  id_usuario int NOT NULL,
+  user_id int NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (id_usuario) references usuarios(id)
+  FOREIGN KEY (user_id) references usuarios(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
